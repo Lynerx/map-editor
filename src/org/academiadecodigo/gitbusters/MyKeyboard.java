@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class MyKeyboard implements KeyboardHandler {
 
-    private SpecialOne  specialOne;
+    private SpecialOne specialOne;
 
     public MyKeyboard(SpecialOne specialOne) {
         this.specialOne = specialOne;
@@ -61,9 +61,16 @@ public class MyKeyboard implements KeyboardHandler {
             case KeyboardEvent.KEY_DOWN:
                 specialOne.moveDown();
                 break;
-//            case KeyboardEvent.KEY_SPACE -> ;
+            case KeyboardEvent.KEY_SPACE:
+                specialOne.paintSquare();
+                break;
+            case KeyboardEvent.KEY_L:
+                // load prev map
+            case KeyboardEvent.KEY_C:
+                // clear map
+            case KeyboardEvent.KEY_S:
+                // save map
         }
-
     }
 
     @Override

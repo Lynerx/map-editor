@@ -9,6 +9,7 @@ public class Square {
     public static final int SQUARE_SIZE = 32;
     private int posX;
     private int posY;
+    private boolean isPainted;
 
     public Square(int posX, int posY) {
         this.posX = posX;
@@ -41,4 +42,11 @@ public class Square {
         this.square.fill();
     }
 
+    public boolean isPainted() {
+        return isPainted;
+    }
+
+    public void setPainted(boolean painted) {
+        isPainted = painted;
+    }
 }

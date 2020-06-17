@@ -8,39 +8,49 @@ public class SpecialOne {
     private int X;
     private int Y;
     private MyKeyboard myKeyboard;
-    Rectangle specialOne;
+    private Rectangle specialOne;
+    private Color HOT_PINK = new Color(255,20,147);
 
     public SpecialOne(int X, int Y) {
         this.X = X;
         this.Y = Y;
 
+
         specialOne = new Rectangle(X, Y, Square.SQUARE_SIZE, Square.SQUARE_SIZE);
-        specialOne.setColor(Color.ORANGE);
+        specialOne.setColor(HOT_PINK);
         specialOne.fill();
 
         this.myKeyboard = new MyKeyboard(this);
         myKeyboard.setupKeys();
     }
 
-
-    public void moveUp(){
-        specialOne.translate(0, Square.SQUARE_SIZE);
-        System.out.println("move up");
+    public void moveUp() {
+        specialOne.translate(0, -Square.SQUARE_SIZE);
+        setY(getY()-Square.SQUARE_SIZE);
     }
 
-    public void moveDown(){
+    public void moveDown() {
         specialOne.translate(0, Square.SQUARE_SIZE);
-        System.out.println("move down");
+        setY(getY()+Square.SQUARE_SIZE);
     }
 
-    public void moveRight(){
+    public void moveRight() {
         specialOne.translate(Square.SQUARE_SIZE, 0);
-        System.out.println("move right");
+        setX(getX()+Square.SQUARE_SIZE);
     }
 
-    public void moveLeft(){
+    public void moveLeft() {
         specialOne.translate(-Square.SQUARE_SIZE, 0);
-        System.out.println("move left");
+        setX(getX()-Square.SQUARE_SIZE);
+    }
+
+    public void paintSquare() {
+        for (Square sqr : Map.getAllSquares()) {
+            if (((specialOne.getX() == sqr.getPosX())) && ((specialOne.getY() == sqr.getPosY()))) {
+                sqr.setColor(HOT_PINK);
+                sqr.fill();
+            }
+        }
     }
 
     public int getX() {
@@ -58,5 +68,6 @@ public class SpecialOne {
     public void setY(int y) {
         Y = y;
     }
+
 
 }
