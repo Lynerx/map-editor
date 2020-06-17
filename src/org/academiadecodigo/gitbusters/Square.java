@@ -40,4 +40,5 @@ public class Square {
     public void fill() {
         this.square.fill();
     }
+
 }
