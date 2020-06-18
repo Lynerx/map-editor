@@ -9,14 +9,15 @@ public class Map {
     public static final int PADDING = 10;
     private static int width;
     private static int height;
+    private static Rectangle CANVAS;
     private Square square;
-    private Rectangle CANVAS;
     private SpecialOne specialOne;
     private static ArrayList<Square> allSquares = new ArrayList<>();
 
     public Map(int width, int height) {
         Map.width = width;
         Map.height = height;
+
         CANVAS = new Rectangle(PADDING, PADDING, width, height);
         CANVAS.draw();
 
@@ -30,6 +31,16 @@ public class Map {
             for (int j = 0; j < CANVAS.getHeight() / Square.SQUARE_SIZE; j++) {
                 square = new Square(i * Square.SQUARE_SIZE + PADDING, j * Square.SQUARE_SIZE + PADDING);
                 allSquares.add(square);
+            }
+        }
+    }
+
+    public static void clearMap() {
+        for (Square square : getAllSquares()) {
+            if (square.isPainted()) {
+                square.delete();
+                square.draw();
+                square.setPainted(false);
             }
         }
     }

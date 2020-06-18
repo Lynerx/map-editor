@@ -41,6 +41,11 @@ public class MyKeyboard implements KeyboardHandler {
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         space.setKey(KeyboardEvent.KEY_SPACE);
         keyboard.addEventListener(space);
+
+        KeyboardEvent C_Key = new KeyboardEvent();
+        C_Key.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        C_Key.setKey(KeyboardEvent.KEY_C);
+        keyboard.addEventListener(C_Key);
     }
 
 
@@ -67,7 +72,7 @@ public class MyKeyboard implements KeyboardHandler {
             case KeyboardEvent.KEY_L:
                 // load prev map
             case KeyboardEvent.KEY_C:
-                // clear map
+                Map.clearMap();
             case KeyboardEvent.KEY_S:
                 // save map
         }

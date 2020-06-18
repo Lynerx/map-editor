@@ -22,16 +22,8 @@ public class Square {
         return posX;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
     public int getPosY() {
         return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
     }
 
     public void setColor(Color color) {
@@ -46,11 +38,11 @@ public class Square {
         return isPainted;
     }
 
-    public void draw(){
+    public void draw() {
         this.square.draw();
     }
 
-    public void delete(){
+    public void delete() {
         this.square.delete();
     }
 
