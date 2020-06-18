@@ -46,6 +46,14 @@ public class Square {
         return isPainted;
     }
 
+    public void draw(){
+        this.square.draw();
+    }
+
+    public void delete(){
+        this.square.delete();
+    }
+
     public void setPainted(boolean painted) {
         isPainted = painted;
     }
