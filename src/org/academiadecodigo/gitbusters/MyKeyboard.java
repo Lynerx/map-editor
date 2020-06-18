@@ -58,8 +58,13 @@ public class MyKeyboard implements KeyboardHandler {
         S_Key.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         S_Key.setKey(KeyboardEvent.KEY_S);
         keyboard.addEventListener(S_Key);
-    }
 
+//        KeyboardEvent spaceRelease = new KeyboardEvent();
+//        spaceRelease.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+//        spaceRelease.setKey(KeyboardEvent.KEY_SPACE);
+//        keyboard.addEventListener(spaceRelease);
+
+    }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
@@ -67,6 +72,7 @@ public class MyKeyboard implements KeyboardHandler {
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_RIGHT:
+
                 specialOne.moveRight();
                 break;
 
@@ -104,14 +110,11 @@ public class MyKeyboard implements KeyboardHandler {
                 } catch (IOException ioException) {
                     ioException.printStackTrace();
                 }
-
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
-
     }
-
 }

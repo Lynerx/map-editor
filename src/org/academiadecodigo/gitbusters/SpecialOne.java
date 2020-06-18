@@ -5,14 +5,11 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class SpecialOne {
 
-    private int X;
-    private int Y;
+
     private MyKeyboard myKeyboard;
     private Rectangle specialOne;
 
     public SpecialOne(int X, int Y) {
-        this.X = X;
-        this.Y = Y;
 
         specialOne = new Rectangle(X, Y, Square.SQUARE_SIZE, Square.SQUARE_SIZE);
         specialOne.setColor(Color.BLACK);
@@ -23,27 +20,31 @@ public class SpecialOne {
     }
 
     public void moveUp() {
-        specialOne.translate(0, -Square.SQUARE_SIZE);
-        setY(getY() - Square.SQUARE_SIZE);
+        if (!(getY() == 10)) {
+            specialOne.translate(0, -Square.SQUARE_SIZE);
+        }
     }
 
     public void moveDown() {
-        specialOne.translate(0, Square.SQUARE_SIZE);
-        setY(getY() + Square.SQUARE_SIZE);
+        if (!(getY() == Map.getHeight() - 22)) {
+            specialOne.translate(0, Square.SQUARE_SIZE);
+        }
     }
 
     public void moveRight() {
-        specialOne.translate(Square.SQUARE_SIZE, 0);
-        setX(getX() + Square.SQUARE_SIZE);
+        if (!(getX() == Map.getWidth() - 22)) {
+            specialOne.translate(Square.SQUARE_SIZE, 0);
+        }
     }
 
     public void moveLeft() {
-        specialOne.translate(-Square.SQUARE_SIZE, 0);
-        setX(getX() - Square.SQUARE_SIZE);
+        if (!(getX() == 10)) {
+            specialOne.translate(-Square.SQUARE_SIZE, 0);
+
+        }
     }
 
     public void paintSquare() {
-
         for (Square sqr : Map.getAllSquares()) {
             if ((specialOne.getX() == sqr.getPosX()) && (specialOne.getY() == sqr.getPosY())) {
 
@@ -62,20 +63,11 @@ public class SpecialOne {
     }
 
     public int getX() {
-        return X;
-    }
-
-    public void setX(int x) {
-        X = x;
+        return specialOne.getX();
     }
 
     public int getY() {
-        return Y;
+        return specialOne.getY();
     }
-
-    public void setY(int y) {
-        Y = y;
-    }
-
 
 }

@@ -52,18 +52,12 @@ public class Square {
     }
 
 
-    public Rectangle getSquare() {
-        return this.square;
-    }
-
     @Override
     public String toString() {
         if (isPainted) {
             return "1";
         }
         return "0";
-
-
     }
 
 

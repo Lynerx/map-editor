@@ -5,7 +5,6 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Map {
 
@@ -29,6 +28,14 @@ public class Map {
 
         drawInitialMap();
         specialOne = new SpecialOne(PADDING, PADDING);
+    }
+
+    public static int getWidth() {
+        return width;
+    }
+
+    public static int getHeight() {
+        return height;
     }
 
     public void drawInitialMap() {
@@ -65,7 +72,6 @@ public class Map {
 
             for (Square square : getAllSquares()) {
                 bufferedWriter.write(square.toString());
-//                bufferedWriter.newLine();
             }
 
             bufferedWriter.flush();
@@ -78,7 +84,6 @@ public class Map {
             if (bufferedWriter != null) {
                 bufferedWriter.close();
             }
-
         }
     }
 
@@ -114,14 +119,6 @@ public class Map {
 
     public static ArrayList<Square> getAllSquares() {
         return allSquares;
-    }
-
-    public static int getWidth() {
-        return width;
-    }
-
-    public static int getHeight() {
-        return height;
     }
 
 }
