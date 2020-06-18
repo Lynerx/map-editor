@@ -5,6 +5,8 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.io.IOException;
+
 public class MyKeyboard implements KeyboardHandler {
 
     private SpecialOne specialOne;
@@ -46,6 +48,16 @@ public class MyKeyboard implements KeyboardHandler {
         C_Key.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         C_Key.setKey(KeyboardEvent.KEY_C);
         keyboard.addEventListener(C_Key);
+
+        KeyboardEvent L_Key = new KeyboardEvent();
+        L_Key.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        L_Key.setKey(KeyboardEvent.KEY_L);
+        keyboard.addEventListener(L_Key);
+
+        KeyboardEvent S_Key = new KeyboardEvent();
+        S_Key.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        S_Key.setKey(KeyboardEvent.KEY_S);
+        keyboard.addEventListener(S_Key);
     }
 
 
@@ -57,29 +69,48 @@ public class MyKeyboard implements KeyboardHandler {
             case KeyboardEvent.KEY_RIGHT:
                 specialOne.moveRight();
                 break;
+
             case KeyboardEvent.KEY_LEFT:
                 specialOne.moveLeft();
                 break;
+
             case KeyboardEvent.KEY_UP:
                 specialOne.moveUp();
                 break;
+
             case KeyboardEvent.KEY_DOWN:
                 specialOne.moveDown();
                 break;
+
             case KeyboardEvent.KEY_SPACE:
                 specialOne.paintSquare();
                 break;
-            case KeyboardEvent.KEY_L:
-                // load prev map
+
             case KeyboardEvent.KEY_C:
                 Map.clearMap();
+                break;
+
             case KeyboardEvent.KEY_S:
-                // save map
+                try {
+                    Map.saveMap();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                break;
+
+            case KeyboardEvent.KEY_L:
+                try {
+                    Map.loadMap();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
+
 
     }
 

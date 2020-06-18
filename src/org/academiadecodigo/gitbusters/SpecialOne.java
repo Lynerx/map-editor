@@ -9,7 +9,6 @@ public class SpecialOne {
     private int Y;
     private MyKeyboard myKeyboard;
     private Rectangle specialOne;
-//    private Color HOT_PINK = new Color(255, 20, 147);
 
     public SpecialOne(int X, int Y) {
         this.X = X;

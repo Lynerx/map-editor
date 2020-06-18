@@ -14,6 +14,7 @@ public class Square {
     public Square(int posX, int posY) {
         this.posX = posX;
         this.posY = posY;
+
         square = new Rectangle(posX, posY, SQUARE_SIZE, SQUARE_SIZE);
         square.draw();
     }
@@ -49,4 +50,21 @@ public class Square {
     public void setPainted(boolean painted) {
         isPainted = painted;
     }
+
+
+    public Rectangle getSquare() {
+        return this.square;
+    }
+
+    @Override
+    public String toString() {
+        if (isPainted) {
+            return "1";
+        }
+        return "0";
+
+
+    }
+
+
 }

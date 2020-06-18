@@ -1,8 +1,11 @@
 package org.academiadecodigo.gitbusters;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Map {
 
@@ -13,6 +16,9 @@ public class Map {
     private Square square;
     private SpecialOne specialOne;
     private static ArrayList<Square> allSquares = new ArrayList<>();
+    private static BufferedWriter bufferedWriter;
+    private static BufferedReader bufferedReader;
+    private static String filePath = "resources/mapData.txt";
 
     public Map(int width, int height) {
         Map.width = width;
@@ -45,6 +51,67 @@ public class Map {
         }
     }
 
+    public static void saveMap() throws IOException {
+
+        try {
+            File dataFile = new File(filePath);
+
+            if (!dataFile.exists()) {
+                dataFile.createNewFile();
+            }
+
+            bufferedWriter = new BufferedWriter(new FileWriter(dataFile));
+            bufferedReader = new BufferedReader(new FileReader(dataFile));
+
+            for (Square square : getAllSquares()) {
+                bufferedWriter.write(square.toString());
+//                bufferedWriter.newLine();
+            }
+
+            bufferedWriter.flush();
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+
+        } finally {
+
+            if (bufferedWriter != null) {
+                bufferedWriter.close();
+            }
+
+        }
+    }
+
+    public static void loadMap() throws IOException {
+
+        try {
+
+            String line;
+            String currentLine = "";
+
+            while ((line = bufferedReader.readLine()) != null) {
+                currentLine += line + "\n";
+            }
+
+            for (int i = 0; i < currentLine.split("").length; i++) {
+                if (currentLine.split("")[i].equals("1")) {
+                    allSquares.get(i).setColor(Color.BLACK);
+                    allSquares.get(i).fill();
+                    allSquares.get(i).setPainted(true);
+                }
+            }
+
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+
+        } finally {
+
+            if (bufferedReader != null) {
+                bufferedReader.close();
+            }
+        }
+    }
+
     public static ArrayList<Square> getAllSquares() {
         return allSquares;
     }
@@ -56,4 +123,5 @@ public class Map {
     public static int getHeight() {
         return height;
     }
+
 }
